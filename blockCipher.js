@@ -112,7 +112,7 @@ function szyfruj (tekst, klucz) {
 }
 
 // Deszyfracja polega na szyfryzacji danych tym samym algorytmem szyfrowanie ale
-// z kluczami podanymi w odwrotnej kolejności. Zgodnie z permutacją Feistela.
+// z kluczami podanymi w odwrotnej kolejności. Zgodnie z siecią Feistela.
 function deszyfruj (tekst, klucz) {
   return szyfr(tekst, generujKluczeRundowe(klucz).reverse())
 }

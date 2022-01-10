@@ -31,19 +31,18 @@ function stringXOR (str1, str2, długość) {
 }
 
 const SBox = [
-  (x1, x2, x3, x4, k1) => {
-    return x1 ^ x1 & x3 ^ x2 & x4 ^ x2 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k1
-  },
-  (x1, x2, x3, x4, k2) => {
-    return x2 ^ x1 & x3 ^ x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k2
-  },
-  (x1, x2, x3, x4, k3) => {
-    return 1 ^ x3 ^ x1 & x4 ^ x1 & x2 & x4 ^ x1 & x2 & x3 & x4 ^ k3
-  },
-  (x1, x2, x3, x4, k4) => {
-    return 1 ^ x1 & x2 ^ x3 & x4 ^ x1 & x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k4
-  }
+  (x1, x2, x3, x4, k1) => x1 ^ x1 & x3 ^ x2 & x4 ^ x2 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k1,
+  (x1, x2, x3, x4, k2) => x2 ^ x1 & x3 ^ x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k2,
+  (x1, x2, x3, x4, k3) => 1 ^ x3 ^ x1 & x4 ^ x1 & x2 & x4 ^ x1 & x2 & x3 & x4 ^ k3,
+  (x1, x2, x3, x4, k4) => 1 ^ x1 & x2 ^ x3 & x4 ^ x1 & x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k4
 ]
+
+function SBoxOut (tekst, kluczRundowy) {
+  return SBox[0](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[0], 2)).toString(2) +
+    SBox[1](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[1], 2)).toString(2) +
+    SBox[2](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[2], 2)).toString(2) +
+    SBox[3](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[3], 2)).toString(2)
+}
 
 function wybor (klucz) {
   return klucz[0] + klucz[2] + klucz[4] + klucz[6]
@@ -72,13 +71,6 @@ function generujKluczeRundowe (klucz) {
   }
 
   return kluczeRundowe
-}
-
-function SBoxOut (tekst, kluczRundowy) {
-  return SBox[0](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[0], 2)).toString(2) +
-    SBox[1](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[1], 2)).toString(2) +
-    SBox[2](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[2], 2)).toString(2) +
-    SBox[3](parseInt(tekst[0], 2), parseInt(tekst[1], 2), parseInt(tekst[2], 2), parseInt(tekst[4], 2), parseInt(kluczRundowy[3], 2)).toString(2)
 }
 
 function szyfr (tekst, kluczeRundowe) {

@@ -31,17 +31,17 @@ function stringXOR (str1, str2, długość) {
 }
 
 const SBox = [
-  (x1, x2, x3, x4, k) => {
-    return x1 ^ x1 & x3 ^ x2 & x4 ^ x2 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k
+  (x1, x2, x3, x4, k1) => {
+    return x1 ^ x1 & x3 ^ x2 & x4 ^ x2 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k1
   },
-  (x1, x2, x3, x4, k) => {
-    return x2 ^ x1 & x3 ^ x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k
+  (x1, x2, x3, x4, k2) => {
+    return x2 ^ x1 & x3 ^ x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k2
   },
-  (x1, x2, x3, x4, k) => {
-    return 1 ^ x3 ^ x1 & x4 ^ x1 & x2 & x4 ^ x1 & x2 & x3 & x4 ^ k
+  (x1, x2, x3, x4, k3) => {
+    return 1 ^ x3 ^ x1 & x4 ^ x1 & x2 & x4 ^ x1 & x2 & x3 & x4 ^ k3
   },
-  (x1, x2, x3, x4, k) => {
-    return 1 ^ x1 & x2 ^ x3 & x4 ^ x1 & x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k
+  (x1, x2, x3, x4, k4) => {
+    return 1 ^ x1 & x2 ^ x3 & x4 ^ x1 & x2 & x4 ^ x1 & x3 & x4 ^ x1 & x2 & x3 & x4 ^ k4
   }
 ]
 

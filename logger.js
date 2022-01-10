@@ -1,11 +1,11 @@
-'use-strict';
+'use-strict'
 
-const logLevel = process.env.LOG;
+const logLevel = process.env.LOG
 
-function debug(message) {
+function debug (message) {
   if (logLevel === 'debug') {
-    console.log(message);
+    console.log(message)
   }
 }
 
-module.exports = { debug };
+module.exports = { debug }
